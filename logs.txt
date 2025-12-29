@@ -1,0 +1,64 @@
+<hr>
+
+<h2>📄 Research Papers</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" width="100%">
+    <tr>
+        <th align="left">Title</th>
+        <th align="left">Year</th>
+        <th align="left">Document</th>
+    </tr>
+    <tr>
+        <td>AI-Based Network Security Analysis</td>
+        <td>2024</td>
+        <td>
+            <a href="papers/research-paper-1.pdf" target="_blank">
+                View PDF
+            </a>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<h2>🛠 Project Papers</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" width="100%">
+    <tr>
+        <th align="left">Project Name</th>
+        <th align="left">Technology</th>
+        <th align="left">Document</th>
+    </tr>
+    <tr>
+        <td>LAN Messenger System</td>
+        <td>C, Socket Programming</td>
+        <td>
+            <a href="projects/project-report-1.pdf" target="_blank">
+                View PDF
+            </a>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<h2>📘 Books</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" width="100%">
+    <tr>
+        <th align="left">Book Title</th>
+        <th align="left">Author</th>
+        <th align="left">Document</th>
+    </tr>
+    <tr>
+        <td>Computer Networking Basics</td>
+        <td>Self Research</td>
+        <td>
+            <a href="books/book-1.pdf" target="_blank">
+                Read PDF
+            </a>
+        </td>
+    </tr>
+</table>
+
+<hr>
