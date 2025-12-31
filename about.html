@@ -4,58 +4,206 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | BlogMate Library</title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f6f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #0077cc;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .nav a.active {
+            color: #222;
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .features {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            list-style: none;
+        }
+
+        .features li {
+            margin-bottom: 8px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features i {
+            color: #0077cc;
+            font-size: 18px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        a {
+            color: #0077cc;
+            word-break: break-word;
+        }
+
+        .updated {
+            font-size: 14px;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            p,
+            .features li {
+                font-size: 15px;
+            }
+
+            .nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<center>
+<main class="container">
+
     <h1>About BlogMate Library</h1>
-</center>
 
-<hr>
+    <hr>
 
-<center>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a>
-</center>
+    <nav class="nav">
+        <a href="index.html">Home</a> |
+        <a href="about.html" class="active">About</a>
+    </nav>
 
-<hr>
+    <hr>
 
-<h2>About This Library</h2>
+    <h2><i class="bi bi-info-circle"></i> About This Library</h2>
+    <p>
+        BlogMate Library is a personal digital collection created to store and share
+        research papers, project documentation, and books. This website is part of
+        the BlogMate project ecosystem.
+    </p>
 
-<p>
-    Blogmate library is a personal digital collection created to store and share
-    research papers, project documentation and books.<br>
-    This website is a part of the Blogmate project ecosystem.
-</p>
+    <h2><i class="bi bi-bullseye"></i> Mission</h2>
+    <p>
+        To document, organize, and openly share technical knowledge,
+        research work, and learning resources in a simple and accessible way.
+    </p>
 
-<h2>Purpose</h2>
+    <h2><i class="bi bi-collection"></i> What You’ll Find Here</h2>
+    <ul class="features">
+        <li><i class="bi bi-file-earmark-text"></i> Project and research papers</li>
+        <li><i class="bi bi-book"></i> Technical books and references</li>
+        <li><i class="bi bi-tools"></i> Documentation from ongoing projects</li>
+        <li><i class="bi bi-journal-text"></i> Learning resources and technical notes</li>
+    </ul>
 
-<p>
-    Blogmate Library is a personal digital collection created to store and share
-    research papers, project documentation, and books related to my interesting
-    and my own project that I am working on. The Purpose of this library is to
-    provide a convenient and easy-to access platform for users to access and
-    access my digital contents. It is a place where I can share my knowledge and 
-    experiences with others. It is like open source library for my research and 
-    projects.
-</p>
+    <h2><i class="bi bi-people"></i> Who Is This For?</h2>
+    <p>
+        This library is intended for students, developers, researchers,
+        and anyone interested in technology, IoT, and software projects.
+    </p>
 
-<h2>Maintained By</h2>
+    <h2><i class="bi bi-code-slash"></i> Platform Details</h2>
+    <p>
+        BlogMate Library is a static website built using HTML, CSS,
+        and JavaScript, and is hosted on GitHub Pages.
+    </p>
 
-<p>
-    <b>Blogmate project ecosystem</b><br><br>
-    Find more about me on my BlogMate page:<br>
-    <a href="https://zroxcoder.github.io/blog/" target="_blank">
-        https://zroxcoder.github.io/blog/
-    </a>
-</p>
+    <h2><i class="bi bi-person-badge"></i> Maintained By</h2>
+    <p>
+        <strong>BlogMate project ecosystem</strong><br><br>
+        Learn more about me on my BlogMate page:<br>
+        <a href="https://zroxcoder.github.io/blog/" target="_blank">
+            https://zroxcoder.github.io/blog/
+        </a>
+    </p>
 
-<hr>
+    <p class="updated">
+        <i class="bi bi-clock-history"></i> Last updated: March 2025
+    </p>
 
-<center>
-    <p>© 2025 BlogMate Library</p>
-</center>
+    <hr>
+
+    <footer>
+        © 2025 BlogMate Library
+    </footer>
+
+</main>
 
 </body>
 </html>
