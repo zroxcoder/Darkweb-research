@@ -5,205 +5,325 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | BlogMate Library</title>
 
+    <!-- Google Fonts: Inter + Poppins for headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        :root {
+            --primary: #6366f1;     /* Indigo */
+            --primary-dark: #4f46e5;
+            --text: #e2e8f0;
+            --text-dark: #1e293b;
+            --bg: #0f172a;          /* Slate-900 */
+            --card: #1e293b;        /* Slate-800 */
+            --accent: #8b5cf6;      /* Purple accent */
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f6f8;
-            color: #333;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
 
         .container {
-            max-width: 900px;
-            margin: auto;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
         h1 {
-            text-align: center;
-            margin-bottom: 10px;
-            color: #222;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #a78bfa, #c084fc, #e879f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
         }
 
-        h2 {
-            margin-top: 25px;
-            margin-bottom: 10px;
-            color: #444;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            font-weight: 400;
         }
 
         .nav {
-            text-align: center;
-            margin: 15px 0;
+            margin-top: 40px;
+            padding: 18px 0;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
         }
 
         .nav a {
+            color: #cbd5e1;
             text-decoration: none;
-            color: #0077cc;
-            margin: 0 10px;
-            font-weight: bold;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin: 0 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: white;
         }
 
         .nav a.active {
-            color: #222;
-            text-decoration: underline;
+            color: white;
+        }
+
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -26px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Sections */
+        section {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.25);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        h2 i {
+            font-size: 2rem;
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.2);
+            padding: 10px;
+            border-radius: 12px;
         }
 
         p {
-            margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 16px;
         }
 
         .features {
-            margin-left: 20px;
-            margin-bottom: 15px;
             list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
 
         .features li {
-            margin-bottom: 8px;
-            font-size: 16px;
+            background: rgba(99, 102, 241, 0.15);
+            padding: 20px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .features li:hover {
+            background: rgba(99, 102, 241, 0.25);
+            transform: translateX(10px);
         }
 
         .features i {
-            color: #0077cc;
-            font-size: 18px;
+            font-size: 2rem;
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.2);
+            padding: 14px;
+            border-radius: 14px;
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            padding: 4px 12px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .updated {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
         }
 
         footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #666;
+            padding: 40px 0;
+            color: #64748b;
+            font-size: 0.95rem;
         }
 
         a {
-            color: #0077cc;
-            word-break: break-word;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
         }
 
-        .updated {
-            font-size: 14px;
-            color: #777;
-            margin-top: 10px;
+        a:hover {
+            text-decoration: underline;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 18px;
-            }
-
-            p,
-            .features li {
-                font-size: 15px;
-            }
-
-            .nav a {
-                display: inline-block;
-                margin: 5px;
-            }
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 1.6rem; }
+            section { padding: 30px 20px; }
+            .features { grid-template-columns: 1fr; }
+            .nav a { margin: 0 12px; font-size: 1rem; }
         }
     </style>
 </head>
-
 <body>
 
-<main class="container">
+<div class="container">
 
-    <h1>About BlogMate Library</h1>
+    <header data-aos="fade-down">
+        <h1>BlogMate Library</h1>
+        <p class="subtitle">A curated digital sanctuary for research, projects, and technical knowledge</p>
 
-    <hr>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+        </nav>
+    </header>
 
-    <nav class="nav">
-        <a href="index.html">Home</a> |
-        <a href="about.html" class="active">About</a>
-    </nav>
+    <section data-aos="fade-up" data-aos-delay="100">
+        <h2><i class="bi bi-info-circle"></i> About This Library</h2>
+        <p>
+            BlogMate Library is a meticulously curated personal digital archive designed to preserve and freely share 
+            high-quality research papers, in-depth project documentation, technical books, and learning resources. 
+            It serves as the knowledge backbone of the entire <span class="highlight">BlogMate project ecosystem</span>.
+        </p>
+    </section>
 
-    <hr>
+    <section data-aos="fade-up" data-aos-delay="200">
+        <h2><i class="bi bi-bullseye"></i> Mission</h2>
+        <p>
+            To democratize access to advanced technical knowledge by documenting, organizing, and openly distributing 
+            cutting-edge research and practical engineering insights in the most elegant and accessible format possible.
+        </p>
+    </section>
 
-    <h2><i class="bi bi-info-circle"></i> About This Library</h2>
-    <p>
-        BlogMate Library is a personal digital collection created to store and share
-        research papers, project documentation, and books. This website is part of
-        the BlogMate project ecosystem.
-    </p>
+    <section data-aos="fade-up" data-aos-delay="300">
+        <h2><i class="bi bi-collection"></i> What You’ll Find Here</h2>
+        <ul class="features">
+            <li data-aos="fade-right" data-aos-delay="100">
+                <i class="bi bi-file-earmark-text"></i>
+                <div>Peer-reviewed research papers and preprints</div>
+            </li>
+            <li data-aos="fade-right" data-aos-delay="200">
+                <i class="bi bi-book"></i>
+                <div>Handpicked technical books and reference manuals</div>
+            </li>
+            <li data-aos="fade-right" data-aos-delay="300">
+                <i class="bi bi-tools"></i>
+                <div>Complete documentation from real-world ongoing projects</div>
+            </li>
+            <li data-aos="fade-right" data-aos-delay="400">
+                <i class="bi bi-journal-text"></i>
+                <div>Detailed technical notes, tutorials, and learning paths</div>
+            </li>
+        </ul>
+    </section>
 
-    <h2><i class="bi bi-bullseye"></i> Mission</h2>
-    <p>
-        To document, organize, and openly share technical knowledge,
-        research work, and learning resources in a simple and accessible way.
-    </p>
+    <section data-aos="fade-up" data-aos-delay="400">
+        <h2><i class="bi bi-people"></i> Who Is This For?</h2>
+        <p>
+            Students pushing academic boundaries • Developers building tomorrow's systems • Researchers exploring new frontiers • 
+            Self-learners mastering complex domains • Anyone passionate about technology, IoT, embedded systems, and software craftsmanship.
+        </p>
+    </section>
 
-    <h2><i class="bi bi-collection"></i> What You’ll Find Here</h2>
-    <ul class="features">
-        <li><i class="bi bi-file-earmark-text"></i> Project and research papers</li>
-        <li><i class="bi bi-book"></i> Technical books and references</li>
-        <li><i class="bi bi-tools"></i> Documentation from ongoing projects</li>
-        <li><i class="bi bi-journal-text"></i> Learning resources and technical notes</li>
-    </ul>
+    <section data-aos="fade-up" data-aos-delay="500">
+        <h2><i class="bi bi-code-slash"></i> Platform Details</h2>
+        <p>
+            Built as a blazing-fast static site using modern HTML5, CSS3 (with CSS variables & backdrop-filter), 
+            and vanilla JavaScript. Powered by GitHub Pages with continuous deployment. 
+            Fully responsive, accessibility-first, and obsessively optimized for performance.
+        </p>
+    </section>
 
-    <h2><i class="bi bi-people"></i> Who Is This For?</h2>
-    <p>
-        This library is intended for students, developers, researchers,
-        and anyone interested in technology, IoT, and software projects.
-    </p>
+    <section data-aos="fade-up" data-aos-delay="600">
+        <h2><i class="bi bi-person-badge"></i> Maintained By</h2>
+        <p>
+            <strong>The BlogMate Project Ecosystem</strong><br><br>
+            Discover more about the creator and ongoing work:<br>
+            <a href="https://zroxcoder.github.io/blog/" target="_blank">
+                https://zroxcoder.github.io/blog/
+            </a>
+        </p>
 
-    <h2><i class="bi bi-code-slash"></i> Platform Details</h2>
-    <p>
-        BlogMate Library is a static website built using HTML, CSS,
-        and JavaScript, and is hosted on GitHub Pages.
-    </p>
+        <p class="updated">
+            <i class="bi bi-clock-history"></i> Last updated: March 2025
+        </p>
+    </section>
 
-    <h2><i class="bi bi-person-badge"></i> Maintained By</h2>
-    <p>
-        <strong>BlogMate project ecosystem</strong><br><br>
-        Learn more about me on my BlogMate page:<br>
-        <a href="https://zroxcoder.github.io/blog/" target="_blank">
-            https://zroxcoder.github.io/blog/
-        </a>
-    </p>
-
-    <p class="updated">
-        <i class="bi bi-clock-history"></i> Last updated: March 2025
-    </p>
-
-    <hr>
-
-    <footer>
-        © 2025 BlogMate Library
+    <footer data-aos="fade-up" data-aos-delay="700">
+        © 2025 BlogMate Library — Crafted with passion for knowledge sharing
     </footer>
 
-</main>
+</div>
+
+<!-- AOS Init -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 900,
+        easing: 'ease-out-quart',
+        once: true
+    });
+</script>
 
 </body>
 </html>

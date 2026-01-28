@@ -5,145 +5,303 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlogMate Library</title>
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #8b5cf6;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: rgba(148, 163, 184, 0.15);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .header {
+        header {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #a78bfa, #c084fc, #e879f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 400;
         }
 
         .nav {
-            text-align: center;
-            margin: 15px 0;
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav a {
+            color: #cbd5e1;
             text-decoration: none;
-            color: #0077cc;
-            margin: 0 10px;
-            font-weight: bold;
+            font-weight: 500;
+            font-size: 1.15rem;
+            margin: 0 30px;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
+        .nav a:hover, .nav a.active {
+            color: white;
+        }
+
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -28px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Controls */
         .controls {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 16px;
+            margin: 40px 0;
+            justify-content: center;
         }
 
-        .controls input,
-        .controls select {
-            padding: 10px;
-            font-size: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        .search-box {
+            position: relative;
             flex: 1;
-            min-width: 200px;
+            min-width: 300px;
+            max-width: 500px;
         }
 
-        .table-wrapper {
-            overflow-x: auto;
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            font-size: 1.05rem;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: white;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.3rem;
+        }
+
+        select {
+            padding: 16px 20px;
+            background: rgba(30, 41, 59, 0.7);
+            color: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Table */
+        .table-container {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 700px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
         }
 
         th {
-            background-color: #f0f2f5;
+            background: rgba(99, 102, 241, 0.2);
+            color: white;
+            padding: 20px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.05rem;
         }
 
-        tr:nth-child(even) {
-            background-color: #fafafa;
+        td {
+            padding: 18px 16px;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        tr {
+            transition: all 0.3s ease;
+        }
+
+        tr:hover {
+            background: rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .category-tag {
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+        .research { background: rgba(168, 85, 247, 0.2); color: #e879f9; }
+        .book { background: rgba(251, 146, 60, 0.2); color: #fdba74; }
+
+        td a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        td a:hover {
+            color: white;
+            text-decoration: underline;
         }
 
         /* Pagination */
         .pagination {
-            text-align: center;
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 40px 0;
         }
 
         .pagination button {
-            padding: 6px 12px;
-            margin: 3px;
-            border: 1px solid #ccc;
-            background: #fff;
+            padding: 12px 18px;
+            background: rgba(30, 41, 59, 0.7);
+            color: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
             cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            min-width: 50px;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
         .pagination button.active {
-            background: #0077cc;
-            color: white;
-            border-color: #0077cc;
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
         }
 
         .pagination button:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
         }
 
-        .footer {
+        footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #666;
+            padding: 50px 0 20px;
+            color: #64748b;
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .controls { flex-direction: column; align-items: stretch; }
+            .search-box { max-width: none; }
+            th, td { padding: 14px 10px; font-size: 0.95rem; }
+            .nav a { margin: 0 15px; font-size: 1rem; }
         }
     </style>
 </head>
-
 <body>
 
 <div class="container">
 
-    <div class="header">
+    <header data-aos="fade-down">
         <h1>BlogMate Library</h1>
-        <p><strong>Research Papers | Project Papers | Books</strong></p>
-    </div>
+        <p class="tagline">Research Papers • Project Documentation • Technical Books</p>
 
-    <div class="nav">
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a>
-    </div>
+        <nav class="nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
 
-    <hr>
-
-    <!-- Search & Filter -->
-    <div class="controls">
-        <input type="text" id="searchInput" placeholder="Search title or technology...">
+    <div class="controls" data-aos="fade-up" data-aos-delay="100">
+        <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" id="searchInput" placeholder="Search by title, technology, or keyword...">
+        </div>
         <select id="categoryFilter">
             <option value="all">All Categories</option>
             <option value="project">Project Papers</option>
@@ -152,53 +310,53 @@
         </select>
     </div>
 
-    <div class="table-wrapper">
+    <div class="table-container" data-aos="fade-up" data-aos-delay="200">
         <table id="libraryTable">
             <thead>
                 <tr>
                     <th>Title</th>
                     <th>Category</th>
                     <th>Technology</th>
-                    <th>Link</th>
+                    <th style="text-align: center;">Access</th>
                 </tr>
             </thead>
             <tbody>
                 <tr data-category="project">
-                    <td>Smart Home System</td>
-                    <td>Project</td>
-                    <td>IOT</td>
-                    <td><a href="#" target="_blank">View PDF</a></td>
+                    <td>Smart Home Automation System with Voice Control</td>
+                    <td><span class="category-tag project">Project</span></td>
+                    <td>IoT, ESP32, MQTT</td>
+                    <td><a href="#" target="_blank"><i class="bi bi-box-arrow-up-right"></i> View PDF</a></td>
                 </tr>
-
                 <tr data-category="research">
-                    <td>Energy Optimization in IOT</td>
-                    <td>Research</td>
-                    <td>IOT</td>
-                    <td><a href="#" target="_blank">View PDF</a></td>
+                    <td>Energy-Efficient Routing Protocols in IoT Networks</td>
+                    <td><span class="category-tag research">Research</span></td>
+                    <td>IoT, Wireless Sensors</td>
+                    <td><a href="#" target="_blank"><i class="bi bi-box-arrow-up-right"></i> View Paper</a></td>
                 </tr>
-
                 <tr data-category="book">
-                    <td>Introduction to Embedded Systems</td>
-                    <td>Book</td>
-                    <td>Embedded</td>
-                    <td><a href="#" target="_blank">View Book</a></td>
+                    <td>Introduction to Embedded Systems Using Arduino & C</td>
+                    <td><span class="category-tag book">Book</span></td>
+                    <td>Embedded, Arduino</td>
+                    <td><a href="#" target="_blank"><i class="bi bi-book"></i> Open Book</a></td>
                 </tr>
-
-                <!-- Add more rows freely -->
+                <!-- Add as many as you want -->
             </tbody>
         </table>
     </div>
 
     <div class="pagination" id="pagination"></div>
 
-    <div class="footer">
-        © 2025 BlogMate Library
-    </div>
+    <footer data-aos="fade-up" data-aos-delay="300">
+        © 2025 BlogMate Library — Curated with passion for open knowledge
+    </footer>
 
 </div>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    const rowsPerPage = 5; // 🔧 Change this to 10 or 15 anytime
+    AOS.init({ duration: 900, easing: 'ease-out-quart', once: true });
+
+    const rowsPerPage = 8;
     let currentPage = 1;
 
     const searchInput = document.getElementById("searchInput");
@@ -207,46 +365,51 @@
     const pagination = document.getElementById("pagination");
 
     function getFilteredRows() {
-        const searchText = searchInput.value.toLowerCase();
+        const search = searchInput.value.toLowerCase();
         const category = categoryFilter.value;
 
         return Array.from(tableBody.rows).filter(row => {
-            const text = row.innerText.toLowerCase();
-            const rowCategory = row.dataset.category;
-
-            return (
-                text.includes(searchText) &&
-                (category === "all" || rowCategory === category)
-            );
+            const text = row.textContent.toLowerCase();
+            const rowCat = row.dataset.category;
+            return text.includes(search) && (category === "all" || rowCat === category);
         });
     }
 
     function renderTable() {
-        const filteredRows = getFilteredRows();
-        const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+        const filtered = getFilteredRows();
+        const totalPages = Math.ceil(filtered.length / rowsPerPage);
 
-        tableBody.querySelectorAll("tr").forEach(row => row.style.display = "none");
+        // Hide all
+        tableBody.querySelectorAll("tr").forEach(r => r.style.display = "none");
 
+        // Show current page
         const start = (currentPage - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-
-        filteredRows.slice(start, end).forEach(row => {
-            row.style.display = "";
-        });
+        filtered.slice(start, start + rowsPerPage).forEach(r => r.style.display = "");
 
         renderPagination(totalPages);
     }
 
     function renderPagination(totalPages) {
-        pagination.innerHTML = "";
+        pagination.innerHTML = '';
 
-        const prevBtn = document.createElement("button");
-        prevBtn.textContent = "Prev";
-        prevBtn.disabled = currentPage === 1;
-        prevBtn.onclick = () => { currentPage--; renderTable(); };
-        pagination.appendChild(prevBtn);
+        // Prev
+        const prev = document.createElement("button");
+        prev.innerHTML = '<i class="bi bi-chevron-left"></i>';
+        prev.disabled = currentPage === 1;
+        prev.onclick = () => { currentPage--; renderTable(); };
+        pagination.appendChild(prev);
 
+        // Pages
         for (let i = 1; i <= totalPages; i++) {
+            if (totalPages > 7 && (i > 2 && i < totalPages - 1) && Math.abs(i - currentPage) > 2) {
+                if (i === 3 || i === totalPages - 2) {
+                    const dots = document.createElement("button");
+                    dots.textContent = "...";
+                    dots.disabled = true;
+                    pagination.appendChild(dots);
+                }
+                continue;
+            }
             const btn = document.createElement("button");
             btn.textContent = i;
             btn.classList.toggle("active", i === currentPage);
@@ -254,25 +417,21 @@
             pagination.appendChild(btn);
         }
 
-        const nextBtn = document.createElement("button");
-        nextBtn.textContent = "Next";
-        nextBtn.disabled = currentPage === totalPages;
-        nextBtn.onclick = () => { currentPage++; renderTable(); };
-        pagination.appendChild(nextBtn);
+        // Next
+        const next = document.createElement("button");
+        next.innerHTML = '<i class="bi bi-chevron-right"></i>';
+        next.disabled = currentPage === totalPages || totalPages === 0;
+        next.onclick = () => { currentPage++; renderTable(); };
+        pagination.appendChild(next);
     }
 
-    searchInput.addEventListener("input", () => {
-        currentPage = 1;
-        renderTable();
-    });
+    // Events
+    searchInput.addEventListener("input", () => { currentPage = 1; renderTable(); });
+    categoryFilter.addEventListener("change", () => { currentPage = 1; renderTable(); });
 
-    categoryFilter.addEventListener("change", () => {
-        currentPage = 1;
-        renderTable();
-    });
-
+    // Initial render
     renderTable();
 </script>
 
 </body>
-</html>
+</html>g
